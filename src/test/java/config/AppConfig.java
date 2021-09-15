@@ -6,7 +6,7 @@ import org.aeonbits.owner.Config;
 @Config.Sources({
         "system:properties",
         "classpath:config/local.properties",
-        "classpath:config/${env}.properties"
+        "classpath:config/remote.properties"
 })
 public interface AppConfig extends Config {
     @Key("browserStackUsername")

@@ -6,7 +6,7 @@ import org.aeonbits.owner.Config;
 @Config.Sources({
         "system:properties",
         "classpath:config/local.properties",
-        "classpath:config/${env}.properties"
+        "classpath:config/remote.properties"
 })
 public interface DeviceConfig extends Config {
     @DefaultValue("Google Pixel 3")
