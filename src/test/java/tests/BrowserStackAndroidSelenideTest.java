@@ -24,16 +24,16 @@ public class BrowserStackAndroidSelenideTest extends TestBase {
 
     }
 
-    @Test
-    @DisplayName("Search and open an article")
-    void open() {
-        step("Type search", () -> {
-            $(MobileBy.AccessibilityId("Search Wikipedia")).click();
-            $(MobileBy.id("org.wikipedia.alpha:id/search_src_text")).val("window");
-        });
-        step("Click an content", () ->
-                $$(MobileBy.className("android.widget.TextView")).findBy(text("Search Wikipedia")).click());
-        step("Check title 'Window' ", () ->
-                $(MobileBy.id("org.wikipedia.alpha:id/view_page_title_text")).shouldHave(text("Window")));
+@Test
+@DisplayName("Check history condition")
+void historyConditionTest() {
+    step("Click 'History' icon", () -> {
+        $(MobileBy.AccessibilityId("History")).click();
+    });
+    step("Check empty state text", () -> {
+        $(MobileBy.id("org.wikipedia.alpha:id/history_empty_title")).shouldHave(text("No recently " +
+                "viewed articles"));
+    });
+
     }
 }
