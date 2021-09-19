@@ -4,20 +4,21 @@ import org.aeonbits.owner.Config;
 
 @Config.LoadPolicy(Config.LoadType.MERGE)
 @Config.Sources({
-        "system:properties",
-        "classpath:config/local.properties",
-        "classpath:config/remote.properties"
+		"system:properties",
+		"classpath:config/local.properties",
+		"classpath:config/remote.properties"
 })
 public interface AppConfig extends Config {
-    @Key("browserStackUsername")
-    String browserStackUsername();
 
-    @Key("browserStackPassword")
-    String browserStackPassword();
+	@Key("browserStackUsername")
+	String browserStackUsername();
 
-    @Key("app")
-    String app();
+	@Key("browserStackPassword")
+	String browserStackPassword();
 
-    @Key("browserStackURL")
-    String browserStackURL();
+	@Key("app")
+	String app();
+
+	@Key("browserStackURL")
+	String browserStackURL();
 }

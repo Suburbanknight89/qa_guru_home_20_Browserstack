@@ -14,32 +14,32 @@ import static com.codeborne.selenide.logevents.SelenideLogger.addListener;
 import static helpers.Attach.getSessionId;
 
 public class TestBase {
-    @BeforeAll
-    public static void setup() {
-        addListener("AllureSelenide", new AllureSelenide());
 
-        Configuration.browser = BrowserStackMobileDriver.class.getName();
-        Configuration.startMaximized = false;
-        Configuration.browserSize = null;
-        Configuration.timeout = 10000;
-    }
+	@BeforeAll
+	public static void setup() {
+		addListener("AllureSelenide", new AllureSelenide());
 
-    @BeforeEach
-    public void startDriver() {
-        open();
-    }
+		Configuration.browser = BrowserStackMobileDriver.class.getName();
+		Configuration.startMaximized = false;
+		Configuration.browserSize = null;
+		Configuration.timeout = 10000;
+	}
 
-    @AfterEach
-    public void afterEach() {
-        String sessionId = getSessionId();
+	@BeforeEach
+	public void startDriver() {
+		open();
+	}
 
-        Attach.screenshotAs("Last screenshot");
-        Attach.pageSource();
+	@AfterEach
+	public void afterEach() {
+		String sessionId = getSessionId();
+
+		Attach.screenshotAs("Last screenshot");
+		Attach.pageSource();
 //        Attach.browserConsoleLogs();
 
-        closeWebDriver();
+		closeWebDriver();
 
-        Attach.attachVideo(sessionId);
-
-    }
+		Attach.attachVideo(sessionId);
+	}
 }

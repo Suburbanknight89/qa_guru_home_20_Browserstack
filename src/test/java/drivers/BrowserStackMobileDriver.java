@@ -12,34 +12,36 @@ import java.net.URL;
 
 public class BrowserStackMobileDriver implements WebDriverProvider {
 
-    public static URL getBrowserstackUrl() {
-        try {
-            return new URL(App.config.browserStackURL());
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
-    }
+	public static URL getBrowserstackUrl() {
+		try
+		{
+			return new URL(App.config.browserStackURL());
+		}
+		catch (MalformedURLException e)
+		{
+			throw new RuntimeException(e);
+		}
+	}
 
-    @Override
-    public WebDriver createDriver(DesiredCapabilities desiredCapabilities) {
+	@Override
+	public WebDriver createDriver(DesiredCapabilities desiredCapabilities) {
 
-        // Set your access credentials
-        desiredCapabilities.setCapability("browserstack.user", App.config.browserStackUsername());
-        desiredCapabilities.setCapability("browserstack.key", App.config.browserStackPassword());
+		// Set your access credentials
+		desiredCapabilities.setCapability("browserstack.user", App.config.browserStackUsername());
+		desiredCapabilities.setCapability("browserstack.key", App.config.browserStackPassword());
 
-        // Set URL of the application under test
-        desiredCapabilities.setCapability("app", App.config.app());
+		// Set URL of the application under test
+		desiredCapabilities.setCapability("app", App.config.app());
 
-        // Specify device and os_version for testing
-        desiredCapabilities.setCapability("device", Device.config.device());
-        desiredCapabilities.setCapability("os_version", Device.config.os_version());
+		// Specify device and os_version for testing
+		desiredCapabilities.setCapability("device", Device.config.device());
+		desiredCapabilities.setCapability("os_version", Device.config.os_version());
 
-        // Set other BrowserStack capabilities
-        desiredCapabilities.setCapability("project", "First Java Project");
-        desiredCapabilities.setCapability("build", "Java Android");
-        desiredCapabilities.setCapability("name", "first_test");
+		// Set other BrowserStack capabilities
+		desiredCapabilities.setCapability("project", "First Java Project");
+		desiredCapabilities.setCapability("build", "Java Android");
+		desiredCapabilities.setCapability("name", "first_test");
 
-
-        return new AndroidDriver(getBrowserstackUrl(), desiredCapabilities);
-    }
+		return new AndroidDriver(getBrowserstackUrl(), desiredCapabilities);
+	}
 }

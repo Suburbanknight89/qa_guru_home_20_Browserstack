@@ -4,16 +4,17 @@ import org.aeonbits.owner.Config;
 
 @Config.LoadPolicy(Config.LoadType.MERGE)
 @Config.Sources({
-        "system:properties",
-        "classpath:config/local.properties",
-        "classpath:config/remote.properties"
+		"system:properties",
+		"classpath:config/local.properties",
+		"classpath:config/remote.properties"
 })
 public interface DeviceConfig extends Config {
-    @DefaultValue("Google Pixel 3")
-    @Key("device")
-    String device();
 
-    @DefaultValue("9.0")
-    @Key("os_version")
-    String os_version();
+	@DefaultValue("Google Pixel 3")
+	@Key("device")
+	String device();
+
+	@DefaultValue("9.0")
+	@Key("os_version")
+	String os_version();
 }
